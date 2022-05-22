@@ -1,0 +1,14 @@
+<mat-card *ngFor="let item of items">
+  <mat-card-title><mat-chip-list
+    cdkDropList
+    cdkDropListOrientation="horizontal">
+    <mat-chip
+      cdkDrag
+      *ngFor="let tag of item.tags">
+      {{tag}}
+    </mat-chip>
+  </mat-chip-list></mat-card-title>
+  <img mat-card-image src="{{baseUrl + item.src}}">
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>

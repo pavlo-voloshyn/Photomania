@@ -1,0 +1,34 @@
+
+<div>
+  <mat-form-field class="chip-list" appearance="fill">
+    <mat-label>Tags</mat-label>
+    <mat-chip-list #chipList aria-label="Tag selection">
+      <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+        {{tag}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input placeholder="New tag..."
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+  </mat-form-field>
+<div>
+  <input mat-raised-button color="primary" type="file"
+          (change)="onChange($event)">
+
+  <button mat-raised-button color="primary" (click)="onUpload()">
+      Upload
+  </button>
+</div>
+
+
+<!--Flag variable is used here-->
+<div *ngIf="loading">
+  <h3>Loading ...</h3>
+</div>
+
+</div>

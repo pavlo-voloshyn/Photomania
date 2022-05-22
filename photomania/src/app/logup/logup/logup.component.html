@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="form">
+    <h2>Logup</h2>
+
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>First name</mat-label>
+      <input [(ngModel)]="user.firstName" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Last name</mat-label>
+      <input [(ngModel)]="user.lastName" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Username</mat-label>
+      <input [(ngModel)]="user.userName" matInput>
+    </mat-form-field>
+  <br>
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Password</mat-label>
+      <input [(ngModel)]="user.password" matInput type="password">
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button color="primary" (click)="onClickLogup()">Logup</button>
+    <button mat-button color="primary" (click)="onClickLogin()">Login</button>
+    <div class="error" *ngIf="isError">{{message}}</div>
+  </div>
+</div>

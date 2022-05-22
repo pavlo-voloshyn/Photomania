@@ -1,0 +1,36 @@
+
+<mat-form-field class="search" appearance="fill">
+  <mat-label>Search</mat-label>
+  <input type="text" matInput [(ngModel)]="tag">
+</mat-form-field>
+
+<div>
+  <button *ngIf="isAdmin" mat-fab color="primary" class="add" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div style="display: inline-block;" *ngFor="let item of items">
+  <mat-card *ngIf="isVisible(item)">
+    <mat-card-title><mat-chip-list
+      cdkDropList
+      cdkDropListOrientation="horizontal">
+      <mat-chip
+        cdkDrag
+        *ngFor="let tag of item.tags">
+        {{tag}}
+      </mat-chip>
+    </mat-chip-list></mat-card-title>
+    <img src="{{baseUrl + item.src}}">
+    <mat-card-actions >
+      <div *ngIf="!isAdmin">
+        <ng-template #notAdded>
+          <button mat-icon-button (click)="onClickPlus(item.id)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </ng-template>
+        <mat-icon *ngIf="isAdded(item); else notAdded">done</mat-icon>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

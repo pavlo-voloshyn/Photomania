@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Welcome, {{welcome}}</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button *ngIf="!isAdmin" (click)="onClickMyPhotos()">My photos</button>
+  <button mat-raised-button (click)="onClickAllPhotos()">All photos</button>
+  <button mat-raised-button (click)="onClickLogout()">Logout</button>
+</mat-toolbar>
+
+
+
+<ng-template #allPhotos>
+  <app-all-photos></app-all-photos>
+</ng-template>
+<app-my-photos *ngIf="!isAllPhotos; else allPhotos">
